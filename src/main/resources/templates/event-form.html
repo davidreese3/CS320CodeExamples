@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Form</title>
+</head>
+<body>
+<h1>Event Form</h1>
+
+<form action="/events" method="post">
+    <label>Name:</label>
+    <input type="text" name="name">
+    <label>Date:</label>
+    <input type="text" name="date">
+    <label>Description:</label>
+    <input type="text" name="description">
+    <button type="submit">
+        Create Event
+    </button>
+
+    <!-- Lecture Notes: Thymeleaf for later
+    <form th:action="@{/events}"
+      th:object="${event}"
+      method="post">
+    <input type="text"
+           th:field="*{name}">
+    <input type="text"
+           th:field="*{date}">
+    <input type="text"
+           th:field="*{description}">
+    <button type="submit">
+        Create Event
+    </button>
+    </form>
+
+    -->
+</form>
+</body>
+</html>
