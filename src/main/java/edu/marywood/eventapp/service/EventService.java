@@ -1,5 +1,6 @@
 package edu.marywood.eventapp.service;
 
+import edu.marywood.eventapp.data.EventRepository;
 import edu.marywood.eventapp.model.Event;
 import org.springframework.stereotype.Service;
 
@@ -9,25 +10,26 @@ import java.util.List;
 @Service
 public class EventService {
 
-    private final List<Event> events = new ArrayList<>();
+    private final EventRepository eventRepository;
 
+    // Lecture Notes: Replace with our constructor injection
+    /*
     public EventService() {
-        events.add(new Event("Ciara’s Wedding",
-                "October 17","Mix and mingle"
-        ));
+        ...
+    }
+    */
 
-        events.add(new Event(
-                "Programming Workshop",
-                "October 22", "Introduction to Spring"
-        ));
+    public EventService(EventRepository eventRepository) {
+        this.eventRepository = eventRepository;
     }
 
+    // Lecture Notes: Replace with repo logic
     public List<Event> getAllEvents() {
-        return events;
+        return eventRepository.findAll();
     }
 
     public void addEvent(Event event){
-        events.add(event);
+        eventRepository.save(event);
     }
 
 }

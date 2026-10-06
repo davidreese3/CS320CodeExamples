@@ -1,0 +1,30 @@
+# Lecture Notes: Part 1
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: eventdb
+      POSTGRES_USER: eventuser
+      POSTGRES_PASSWORD: password
+    # Lecture Notes: Part 5
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U eventuser -d eventdb" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Lecture Notes: Part 2
+  app:
+    build: .
+    # Lecture Notes: Part 3
+    ports:
+      - "8080:8080"
+    # Lecture Notes: Part 4
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/eventdb
+      SPRING_DATASOURCE_USERNAME: eventuser
+      SPRING_DATASOURCE_PASSWORD: password
+    # Lecture Notes: Part 5
+    depends_on:
+      db:
+        condition: service_healthy
