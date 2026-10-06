@@ -1,13 +1,29 @@
 package edu.marywood.eventapp.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "events")
 public class Event {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
     private String date;
     private String description;
 
     // Lecture Notes: don't include default at first
     public Event(){}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public Event(String name, String date, String description) {
         this.name = name;
         this.date = date;
