@@ -5,6 +5,7 @@ import edu.marywood.eventapp.service.EventService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,7 +30,8 @@ public class EventController {
     }
 
     @GetMapping("/new")
-    public String showEventForm() {
+    public String showEventForm(Model model) {
+        model.addAttribute("event", new Event());
         return "event-form";
     }
 
@@ -43,7 +45,7 @@ public class EventController {
     }
      */
     @PostMapping
-    public String createEvent(Event event) {
+    public String createEvent(@ModelAttribute("event") Event event) {
         eventService.addEvent(event);
         return "redirect:/events";
     }
