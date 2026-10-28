@@ -35,7 +35,7 @@ public class EventController {
         return "event-form";
     }
 
-    /* Using individual variables
+    /* Using individual variables won't use with TL
     public String createEvent(
         @RequestParam String name,
         @RequestParam String date,
