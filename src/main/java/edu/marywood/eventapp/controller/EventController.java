@@ -34,16 +34,6 @@ public class EventController {
         return "event-form";
     }
 
-    /* Using individual variables
-    public String createEvent(
-        @RequestParam String name,
-        @RequestParam String date,
-        @RequestParam String description) {
-
-    // ...
-    }
-     */
-
     // Lecture Notes: New Content Below
     @PostMapping
     public String createEvent(@Valid @ModelAttribute("event") Event event, BindingResult result) {
