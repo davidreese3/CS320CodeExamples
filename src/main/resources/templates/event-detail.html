@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Page</title>
+</head>
+<body>
+    <h1 th:text="${event.name}">Event Name</h1>
+    <p>
+        Date:
+        <span th:text="${event.date}"></span>
+    </p>
+    <p th:text="${event.description}"></p>
+    <a th:href="@{/events}">Back to Events</a>
+</body>
+</html>

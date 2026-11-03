@@ -6,10 +6,16 @@
 <body>
 <h1>Event Form</h1>
 
-<form action="/events" method="post">
     <form th:action="@{/events}"
           th:object="${event}"
           method="post">
+        <!-- Lecture Notes: Added for validation -->
+        <p th:if="${#fields.hasErrors('name')}"
+           th:errors="*{name}"></p>
+        <p th:if="${#fields.hasErrors('date')}"
+           th:errors="*{date}"></p>
+        <p th:if="${#fields.hasErrors('description')}"
+           th:errors="*{description}"></p>
         <input type="text"
                th:field="*{name}">
         <input type="text"
@@ -20,6 +26,5 @@
             Create Event
         </button>
     </form>
-</form>
 </body>
 </html>

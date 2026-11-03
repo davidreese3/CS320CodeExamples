@@ -2,12 +2,11 @@ package edu.marywood.eventapp.controller;
 
 import edu.marywood.eventapp.model.Event;
 import edu.marywood.eventapp.service.EventService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,9 +43,21 @@ public class EventController {
     // ...
     }
      */
+
+    // Lecture Notes: New Content Below
     @PostMapping
-    public String createEvent(@ModelAttribute("event") Event event) {
+    public String createEvent(@Valid @ModelAttribute("event") Event event, BindingResult result) {
+        if (result.hasErrors()) {
+            return "event-form";
+        }
         eventService.addEvent(event);
         return "redirect:/events";
+    }
+
+    @GetMapping("/{id}")
+    public String displayEvent(@PathVariable Long id, Model model) {
+        Event event = eventService.getEvent(id);
+        model.addAttribute("event", event);
+        return "event-detail";
     }
 }

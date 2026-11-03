@@ -1,16 +1,25 @@
 package edu.marywood.eventapp.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "events")
 public class Event {
-
+    // Lecture Notes: Updated @ for validation
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank(message = "Event name is required")
+    @Size(max = 100, message = "Name cannot exceed 100 characters")
     private String name;
+
+    @NotBlank(message = "Event date is required")
     private String date;
+
+    @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
 
     // Lecture Notes: don't include default at first
