@@ -5,5 +5,7 @@ This repo is to be used by students of my CS 320 Software Engineering class to a
 Throughout the code, you’ll see comments beginning with “Lecture Notes:”. These mark where we paused while following the slides. You can ignore them when reviewing the completed coding example.
 ## Branch Mappings
 `main` - The original spring boot project (Iteration Three) \
-`testing` - Builds off the original project with testing (Iteration Four) \
-`data` - Builds off the original project with persistence (Iteration Five) \
+`testing` - Adds testing (Iteration Four) \
+`data` - Adds persistence (Iteration Five) \
+`valid` - Adds validation (Iteration Seven) \
+`security` - Adds security (Iteration Eight) \
