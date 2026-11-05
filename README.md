@@ -8,4 +8,4 @@ Throughout the code, you’ll see comments beginning with “Lecture Notes:”. 
 `testing` - Adds testing (Iteration Four) \
 `data` - Adds persistence (Iteration Five) \
 `valid` - Adds validation (Iteration Seven) \
-`security` - Adds security (Iteration Eight) \
+`security` - Adds security (Iteration Eight) 
